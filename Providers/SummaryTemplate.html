@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>App自动化测试聚合报告</title>
+</head>
+<body>
+<div class="top-summary" style="width: 98%; margin: 0 auto">
+    <h1>App自动化测试聚合报告</h1>
+    <br>
+    <h3>全部统计：</h3>
+    <h5>通过：{{ pass_num }}</h5>
+    <h5>失败：{{ failed_num }}</h5>
+    <h5>错误：{{ error_num }}</h5>
+    <br>
+</div>
+<div class="base-container" style="width: 98%; margin: 0 auto">
+    <h3>子模块数据统计：</h3>
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">序号</th>
+            <th scope="col">用例名称</th>
+            <th scope="col">开始时间</th>
+            <th scope="col">运行时长</th>
+            <th scope="col">运行结果</th>
+            <th scope="col">查看详细</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in all_data %}
+        <tr>
+            <th scope="row">{{ item['case_num'] }}</th>
+            <td>{{ item['case_name'] }}</td>
+            <td>{{ item['start_time'] }}</td>
+            <td>{{ item['run_time'] }}</td>
+            <td>通过：{{item['run_result']['通过']}} 失败：{{item['run_result']['失败']}} 错误：{{item['run_result']['错误']}}</td>
+            <td><a href="{{ item['case_name'] + '.html' }}">查看详细</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

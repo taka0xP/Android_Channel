@@ -1,0 +1,5 @@
+selenium==3.141.0
+xlrd==1.2.0
+Appium_Python_Client==0.48
+pillow
+opencv-python
